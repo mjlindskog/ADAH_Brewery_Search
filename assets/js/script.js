@@ -9,12 +9,28 @@ $('#search-button').click(() => {
 })
 
 function renderSearch(data) {
-
+    //console.log(data);
     $('#search-results').empty();
     $('#search-results').removeClass('hide');
     $('#search-form').removeClass('m-0-bottom');
-    let i = 0;
+
+    data = paginateResults(data);
+    renderResultElement(data[0]);
+    Foundation.reInit('accordion');
+}
+
+function formatPhoneNumber(phoneNumberString) {
+    var cleaned = ('' + phoneNumberString).replace(/\D/g, '');
+    var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+      return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+    }
+    return null;
+}
+
+function renderResultElement(data) {
     data.forEach(el => {
+        let i = 0;
         let result = 'result-' + i;
         let content = 'content-' + i;
         let phone = formatPhoneNumber(el.phone)
@@ -32,14 +48,26 @@ function renderSearch(data) {
         $('#search-results').append(item);
         i++;
     })
-    Foundation.reInit('accordion');
 }
 
-function formatPhoneNumber(phoneNumberString) {
-    var cleaned = ('' + phoneNumberString).replace(/\D/g, '');
-    var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-    if (match) {
-      return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+function paginateResults(data) {
+    let arr = [];
+    for(let i = 0; i < data.length; i++) {
+        let smallArr = [];
+        for(let c = 0; c < 10; c++) {
+            if(data[i]) {
+                smallArr.push(data[i])
+                i++;
+            } else {
+                break;
+            }
+        }
+        arr.push(smallArr);
     }
-    return null;
-  }
+    console.log(arr);
+    return arr;
+}
+
+function paginationButtons(data) {
+    $()
+}
