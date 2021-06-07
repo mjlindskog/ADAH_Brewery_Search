@@ -30,7 +30,7 @@
         <!-- Start Search Area -->
         <div class="callout m-25-top m-25-sides p-25">
             <!-- Start Search Bar -->
-            <form class="input-group m-0-bottom">
+            <form class="input-group m-0-bottom" id="search-form">
                 <span class="input-group-label">Find Breweries</span>
                 <input class="input-group-field" type="text" id="search-bar">
                 <div class="input-group-button">
@@ -39,8 +39,8 @@
             </form>
             <!-- End Search Bar -->
             <!-- Start Search Results -->
-            <ul class="accordion hide" data-accordion data-multi-expand="true" data-allow-all-closed="true">
-
+            <ul class="accordion hide" id="search-results" data-accordion data-multi-expand="true" data-allow-all-closed="true" role="tablist">
+              <!-- Search Results Content Goes Here -->
             </ul>
             <!-- End Search Results -->
         </div>
