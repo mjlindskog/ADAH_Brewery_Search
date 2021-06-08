@@ -5,17 +5,19 @@ $('#search-button').click(() => {
     url = 'https://api.openbrewerydb.org/breweries/search?query=' + val;
     fetch(url)
         .then(response => response.json())
-        .then(data => renderSearch(data));
+        .then(data => paginateResults(data))
+        .then(data => renderSearch(data, 0));
 })
 
-function renderSearch(data) {
+function renderSearch(data, index) {
     //console.log(data);
     $('#search-results').empty();
     $('#search-results').removeClass('hide');
     $('#search-form').removeClass('m-0-bottom');
 
-    data = paginateResults(data);
-    renderResultElement(data[0]);
+    //data = paginateResults(data);
+    renderResultElement(data[index]);
+    paginationButtons(data, index);
     Foundation.reInit('accordion');
 }
 
@@ -64,10 +66,81 @@ function paginateResults(data) {
         }
         arr.push(smallArr);
     }
-    console.log(arr);
+    //console.log(arr);
     return arr;
 }
 
-function paginationButtons(data) {
-    $()
+function paginationButtons(data, index) {
+    $('#pagination-buttons').empty();
+    let prev = '<li class="pagination-previous" id="previous-page"><a href="#" aria-label="Previous page">Previous</a></li>';
+    $('#pagination-buttons').append(prev);
+    for(let i = 0; i < data.length; i++) {
+        let pageNum = 'page-' + i;
+        let displayPage = i + 1;
+        //let element = '<li id="' + pageNum + '">' + i + '</li>'
+        let element = '<li id="' + pageNum + '"><a href="#" aria-label="Page ' + displayPage + '">' + displayPage + '</a></li>'
+        $('#pagination-buttons').append(element);
+        //console.log('events')
+        pageNum = '#' + pageNum;
+        $(pageNum).click(() => {
+            console.log(pageNum)
+            event.preventDefault();
+            paginationEvents(data, pageNum)
+        });
+    }
+    let next = '<li class="pagination-next" id="next-page"><a href="#" aria-label="Next page">Next</a></li>'
+    $('#pagination-buttons').append(next);
+    let active = '#page-' + index;
+    $(active).addClass('current');
+    $('#previous-page').click(() => {
+        event.preventDefault()
+        prevEvents(data, active)
+    });
+    $('#next-page').click(() => {
+        event.preventDefault();
+        nextEvents(data, active)
+    });
+    if(index == 0) {
+        $('#previous-page').empty();
+        $('#previous-page').off();
+        $('#previous-page').text('Previous');
+        $('#previous-page').addClass('disabled');
+    } else if(index == (data.length-1)) {
+        $('#next-page').empty();
+        $('#next-page').off();
+        $('#next-page').text('Next');
+        $('#next-page').addClass('disabled');
+    }
+}
+
+function paginationEvents(data, pageNum) {
+    //console.log(data)
+    event.preventDefault();
+    let index = pageNum.split('-')[1];
+    //console.log('index=' + index);
+    renderSearch(data, index);
+}
+
+function nextEvents(data, pageNum) {
+    //console.log(data)
+    event.preventDefault();
+    let index = pageNum.split('-')[1];
+    index = addToString(index, 1);
+    //console.log('index=' + index);
+    renderSearch(data, index);
+}
+
+function prevEvents(data, pageNum) {
+    //console.log(data)
+    event.preventDefault();
+    let index = pageNum.split('-')[1];
+    index = addToString(index, -1);
+    //console.log('index=' + index);
+    renderSearch(data, index);
+}
+
+function addToString(el, add) {
+    el = parseInt(el) + add;
+    el = el.toString();
+    return el
 }

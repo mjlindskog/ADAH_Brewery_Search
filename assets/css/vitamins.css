@@ -1,3 +1,18 @@
+.m-0-bottom {
+    margin-bottom: 0;
+}
+.m-0-left {
+    margin-left: 0 !important;
+}
+
+.m-05-left {
+    margin-left: 0.5rem;
+}
+
+.m-05-left {
+    margin-left: 0.5rem;
+}
+
 .m-1-top {
     margin-top: 1rem;
 }
@@ -7,11 +22,9 @@
     margin-bottom: 1rem;
 }
 
-.m-0-bottom {
-    margin-bottom: 0;
-}
-.m-0-left {
-    margin-left: 0 !important;
+.m-1-sides {
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .m-1-left {
