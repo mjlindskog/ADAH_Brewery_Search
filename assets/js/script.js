@@ -88,20 +88,30 @@ function paginationButtons(data, index) {
             event.preventDefault();
             paginationEvents(data, pageNum)
         });
-        console.log('i=' + i);
-        console.log('index=' + index);
-        let plus2 = parseInt(index) + 2;
-        let minus2 = parseInt(parseInt(index) - 2);
-        if(minus2 < 0) {
-            minus2 = 0;
+        //console.log('i=' + i);
+        //console.log('index=' + index);
+        index = parseInt(index);
+        let plus2 = index + 2;
+        let minus3 = data.length - 3;
+        if(minus3 < 0) {
+            minus3 = 0;
         }
-        console.log('2+index=' + plus2);
-        console.log('minus2=' + minus2)
-        if(i > plus2 && i < data.length - 3) {
-            $(pageNum).addClass('hide')
-        } else if (i < minus2) {
-            $(pageNum).addClass('hide')
-        }
+        //console.log('2+index=' + plus2);
+        //console.log('minus2=' + minus2)
+        if (data.length > 9) {
+            if(i > plus2 && i < minus3) {
+                $(pageNum).addClass('hide')
+            } else if (i < index && i > 2 && i < data.length-3) {
+                $(pageNum).addClass('hide')
+                //$(pageNum).before('<li class="ellipsis" aria-hidden="true"></li>')
+            } else if (i === plus2 && i < minus3) {
+                $(pageNum).after('<li class="ellipsis" aria-hidden="true"></li>');
+            } else if (i > 3  && i === index && i < minus3) {
+                $(pageNum).before('<li class="ellipsis" aria-hidden="true"></li>')
+            } else if(i === minus3 && index >= minus3){
+                $(pageNum).before('<li class="ellipsis" aria-hidden="true"></li>')
+            }
+        }  
     }
     let next = '<li class="pagination-next" id="next-page"><a href="#" aria-label="Next page">Next</a></li>'
     $('#pagination-buttons').append(next);
