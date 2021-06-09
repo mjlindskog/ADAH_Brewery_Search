@@ -74,6 +74,7 @@ function paginationButtons(data, index) {
     $('#pagination-buttons').empty();
     let prev = '<li class="pagination-previous" id="previous-page"><a href="#" aria-label="Previous page">Previous</a></li>';
     $('#pagination-buttons').append(prev);
+
     for(let i = 0; i < data.length; i++) {
         let pageNum = 'page-' + i;
         let displayPage = i + 1;
@@ -87,6 +88,20 @@ function paginationButtons(data, index) {
             event.preventDefault();
             paginationEvents(data, pageNum)
         });
+        console.log('i=' + i);
+        console.log('index=' + index);
+        let plus2 = parseInt(index) + 2;
+        let minus2 = parseInt(parseInt(index) - 2);
+        if(minus2 < 0) {
+            minus2 = 0;
+        }
+        console.log('2+index=' + plus2);
+        console.log('minus2=' + minus2)
+        if(i > plus2 && i < data.length - 3) {
+            $(pageNum).addClass('hide')
+        } else if (i < minus2) {
+            $(pageNum).addClass('hide')
+        }
     }
     let next = '<li class="pagination-next" id="next-page"><a href="#" aria-label="Next page">Next</a></li>'
     $('#pagination-buttons').append(next);
@@ -111,6 +126,11 @@ function paginationButtons(data, index) {
         $('#next-page').text('Next');
         $('#next-page').addClass('disabled');
     }
+    $('#pagination-nav').removeClass('hide');
+}
+
+function renderPageButtons(len) {
+    
 }
 
 function paginationEvents(data, pageNum) {
