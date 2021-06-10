@@ -8,19 +8,25 @@ $('#search-button').click(() => {
         .then(data => paginateResults(data))
         .then(data => renderSearch(data, 0));
 })
-
+//Render Search Results
 function renderSearch(data, index) {
     //console.log(data);
+    //empty out div
     $('#search-results').empty();
+    //show div
     $('#search-results').removeClass('hide');
+    //remove extra margin from the bottom
     $('#search-form').removeClass('m-0-bottom');
 
     //data = paginateResults(data);
+    //render each individual result element
     renderResultElement(data[index]);
+    //Render page buttons
     paginationButtons(data, index);
+    //Reinitialize Foundation Accordion Javascript
     Foundation.reInit('accordion');
 }
-
+//Format phone number
 function formatPhoneNumber(phoneNumberString) {
     var cleaned = ('' + phoneNumberString).replace(/\D/g, '');
     var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
@@ -29,33 +35,45 @@ function formatPhoneNumber(phoneNumberString) {
     }
     return null;
 }
-
+//Render each individual result element
 function renderResultElement(data) {
+    //function performed on each element in the data array
+    let i = 0;
     data.forEach(el => {
-        let i = 0;
+        //Generate unique IDs for each element
         let result = 'result-' + i;
         let content = 'content-' + i;
+        //Get useful info stored
         let phone = formatPhoneNumber(el.phone)
         let url = el.website_url;
         let hrefURL = el.website_url;
+        //check that there is a url listed
         if(url === null) {
             url = 'No Website Listed';
             hrefURL = '#';
         }
+        //check that there is a phone number listed
         if(phone === null) {
             phone = 'No Phone Number Listed'
         }
+        //generate content element ID
         let contentHref = '#content-' + i;
+        //Create item element syntax
         let item = '<li class="accordion-item" data-accordion-item><a href="' + contentHref + '" role="tab" class="accordion-title" id="' + result + '">'+ el.name + '</a><div class="accordion-content" role="tabpanel" data-tab-content id="' + content + '"><h3 class="border-bottom-black">' + el.brewery_type.toUpperCase() + '</h3><h4>' + el.street + '</h4><h4 class="border-bottom-black">' + el.city + ', ' + el.state + '</h4><h5>' + phone + '</h5><a href="' + hrefURL + '" target="_blank">' + url + '</a></div></li>'
+        //append element to search element
         $('#search-results').append(item);
         i++;
     })
 }
-
+//paginate result data
 function paginateResults(data) {
+    //initiate array of arrays
     let arr = [];
+    //start iterating through array elements
     for(let i = 0; i < data.length; i++) {
+        //initiate new array of 10 results
         let smallArr = [];
+        //add all 10 results
         for(let c = 0; c < 10; c++) {
             if(data[i]) {
                 smallArr.push(data[i])
@@ -64,40 +82,56 @@ function paginateResults(data) {
                 break;
             }
         }
+        //push smaller array of 10 results into array of arrays
         arr.push(smallArr);
     }
     //console.log(arr);
+    //return array of arrays
     return arr;
 }
-
+//create pagination buttons
 function paginationButtons(data, index) {
+    //empty out button holder
     $('#pagination-buttons').empty();
+    //create previous button sentax button sentax
     let prev = '<li class="pagination-previous" id="previous-page"><a href="#" aria-label="Previous page">Previous</a></li>';
+    //Add previous button to button holder
     $('#pagination-buttons').append(prev);
-
+    //Truncate results buttons if there are more than 9 resuts returned
     for(let i = 0; i < data.length; i++) {
+        //generate unique button ID
         let pageNum = 'page-' + i;
+        //create button text to be displayed
         let displayPage = i + 1;
-        //let element = '<li id="' + pageNum + '">' + i + '</li>'
+        //generate button sentax
         let element = '<li id="' + pageNum + '"><a href="#" aria-label="Page ' + displayPage + '">' + displayPage + '</a></li>'
+        //append button to button holder
         $('#pagination-buttons').append(element);
         //console.log('events')
+        //Add syntax to utilize jquery dynamically
         pageNum = '#' + pageNum;
+        //add event listener
         $(pageNum).click(() => {
             console.log(pageNum)
             event.preventDefault();
+            //paginate results
             paginationEvents(data, pageNum)
         });
         //console.log('i=' + i);
         //console.log('index=' + index);
+        //turn index string into integer
         index = parseInt(index);
+        //add two to index for comparison
         let plus2 = index + 2;
+        //subtract 3 from data length for comparison
         let minus3 = data.length - 3;
+        //ensure no negative numbers
         if(minus3 < 0) {
             minus3 = 0;
         }
         //console.log('2+index=' + plus2);
         //console.log('minus2=' + minus2)
+        //Logic statements for placement of ellipsis
         if (data.length > 9) {
             if(i > plus2 && i < minus3) {
                 $(pageNum).addClass('hide')
@@ -113,36 +147,41 @@ function paginationButtons(data, index) {
             }
         }  
     }
+    //generate next button syntax
     let next = '<li class="pagination-next" id="next-page"><a href="#" aria-label="Next page">Next</a></li>'
+    //append next button to button holder
     $('#pagination-buttons').append(next);
+    //generate syntax to dynamically use jQuery on active button
     let active = '#page-' + index;
+    //add active class to active page button
     $(active).addClass('current');
+    //set previous page button event listener
     $('#previous-page').click(() => {
         event.preventDefault()
         prevEvents(data, active)
     });
+    //set next page button event listener
     $('#next-page').click(() => {
         event.preventDefault();
         nextEvents(data, active)
     });
+    //if starting button is activated disable the previous button
     if(index == 0) {
         $('#previous-page').empty();
         $('#previous-page').off();
         $('#previous-page').text('Previous');
         $('#previous-page').addClass('disabled');
+        //deactivate next button if on last button
     } else if(index == (data.length-1)) {
         $('#next-page').empty();
         $('#next-page').off();
         $('#next-page').text('Next');
         $('#next-page').addClass('disabled');
     }
+    //show pagination nav
     $('#pagination-nav').removeClass('hide');
 }
-
-function renderPageButtons(len) {
-    
-}
-
+//create index and render
 function paginationEvents(data, pageNum) {
     //console.log(data)
     event.preventDefault();
@@ -150,7 +189,7 @@ function paginationEvents(data, pageNum) {
     //console.log('index=' + index);
     renderSearch(data, index);
 }
-
+//Get next array of results
 function nextEvents(data, pageNum) {
     //console.log(data)
     event.preventDefault();
@@ -159,7 +198,7 @@ function nextEvents(data, pageNum) {
     //console.log('index=' + index);
     renderSearch(data, index);
 }
-
+//get previous array of results
 function prevEvents(data, pageNum) {
     //console.log(data)
     event.preventDefault();
@@ -168,7 +207,7 @@ function prevEvents(data, pageNum) {
     //console.log('index=' + index);
     renderSearch(data, index);
 }
-
+//add to a string containing a number
 function addToString(el, add) {
     el = parseInt(el) + add;
     el = el.toString();
