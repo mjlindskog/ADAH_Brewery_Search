@@ -59,6 +59,48 @@ function renderResultElement(data) {
         }
         //generate content element ID
         let contentHref = '#content-' + i;
+beer-updates
+        let item = '<li class="accordion-item" data-accordion-item><a href="' + contentHref + '" role="tab" class="accordion-title" id="' + result + '">'+ el.name + '</a><div class="accordion-content" role="tabpanel" data-tab-content id="' + content + '"><h3 class="border-bottom-black">' + el.brewery_type.toUpperCase() + '</h3><h4>' + el.street + '</h4><h4 class="border-bottom-black">' + el.city + ', ' + el.state + '</h4><h5>' + phone + '</h5><a href="' + hrefURL + '" target="_blank">' + url + '</a><button class="button eventResults" onclick="pageRedirect()">See Nearby Events</button></div></li>'
+        $('#search-results').append(item);
+        i++;
+    })
+};
+
+var selectedBrewLocation = response.latitude && response.longitude;
+
+function pageRedirect(){
+    window.location.replace("./beer.html");
+    
+    $(document).ready(function(){
+        localEvents;
+    });
+};
+
+function localEvents() {
+    var mjKey = "ofeWXosGnA8zAbYrl3AtIa3oWt9qP1Tj";
+
+    var apiURL = "https://app.ticketmaster.com/discovery/v2/events.json?apikey="+mjKey;
+
+    // possible parameters
+    var eventTime = "&localStartDateTime=";
+    var eventCity = "&city=";
+    var eventLocation = "&latlong=";
+    var locationPreferred = "&geoPoint=";
+    var eventRadius = "&radius=";
+    var eventDistance = "&unit=5";
+    $.ajax({
+        url:"https://app.ticketmaster.com/discovery/v2/events.json?apikey="+mjKey+"&latlong="+selectedBrewLocation+"&unit=5",
+        method:"GET"
+    }).then(function (response) {
+        $(".card-divider").text(response._embedded.venues.name);
+        $(".event-name").text(response._embedded.attractions.name);
+        $(".event-address").text(response._embedded.venues.adress);
+        $(".event-time").text(response.dates.start.localTime);
+        $(".buy-ticket").text(response._embedded.venues.url);
+    });
+};
+
+
         //Create item element syntax
         let item = '<li class="accordion-item" data-accordion-item><a href="' + contentHref + '" role="tab" class="accordion-title" id="' + result + '">'+ el.name + '</a><div class="accordion-content" role="tabpanel" data-tab-content id="' + content + '"><h3 class="border-bottom-black">' + el.brewery_type.toUpperCase() + '</h3><h4>' + el.street + '</h4><h4 class="border-bottom-black">' + el.city + ', ' + el.state + '</h4><h5>' + phone + '</h5><a href="' + hrefURL + '" target="_blank">' + url + '</a></div></li>'
         //append element to search element
@@ -66,6 +108,7 @@ function renderResultElement(data) {
         i++;
     })
 }
+main
 //paginate result data
 function paginateResults(data) {
     //initiate array of arrays
@@ -253,12 +296,19 @@ function showWeather (response) {
         description.innerText = response.weather[0].description;
     }
 
+beer-updates
+
     .then (response => {
         return response.json();})
     .then(showWeather);
 }
+main
 // show weather on screen
 function showWeather (response) {
         console.log(response);
     }
+beer-updates
 // })
+
+// })
+main
