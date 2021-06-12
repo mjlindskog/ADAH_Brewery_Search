@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
@@ -24,7 +24,18 @@
       </div>
     </div>
     <!-- End Top Bar -->
-
+    <!--Weather-->
+    <div id='weather-container'>
+        <h4 id="title">Current Weather</h4>
+    <!-- filler to capture zip code to test functionality -->
+        <input type="text" autocorrect="off" placeholder="Zip Code" id="zip-code"></input>
+        <button class='submitBtn'>Submit</button>
+    <!-- End button filler -->
+        <div class="location"></div>
+        <div class="current-temp"></div>
+        <div class="high-low"></div>
+        <div class="description"></div>
+    </div>
     <!-- Start Main Content -->
     <main class="grid-container fluid">
         <!-- Start Search Area -->
@@ -44,7 +55,7 @@
             </ul>
             <!-- End Search Results -->
             <!-- Results Pagination -->
-            <nav aria-label="Pagination" class="m-1-vert">
+            <nav aria-label="Pagination" class="m-1-vert hide" id="pagination-nav">
               <ul class="pagination text-center" id="pagination-buttons">
                 <li class="pagination-previous disabled" id="previous-page">Previous</li>
                 <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
