@@ -1,5 +1,3 @@
-=======
-//Search Bar Event Listener
 $('#search-button').click(() => {
     event.preventDefault()
     let val = $('#search-bar').val();
@@ -306,9 +304,4 @@ main
 // show weather on screen
 function showWeather (response) {
         console.log(response);
-    }
-beer-updates
-// })
-
-// })
-main
+}
