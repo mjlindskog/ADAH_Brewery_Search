@@ -57,6 +57,7 @@ function renderResultElement(data) {
         }
         //generate content element ID
         let contentHref = '#content-' + i;
+beer-updates
         let item = '<li class="accordion-item" data-accordion-item><a href="' + contentHref + '" role="tab" class="accordion-title" id="' + result + '">'+ el.name + '</a><div class="accordion-content" role="tabpanel" data-tab-content id="' + content + '"><h3 class="border-bottom-black">' + el.brewery_type.toUpperCase() + '</h3><h4>' + el.street + '</h4><h4 class="border-bottom-black">' + el.city + ', ' + el.state + '</h4><h5>' + phone + '</h5><a href="' + hrefURL + '" target="_blank">' + url + '</a><button class="button eventResults" onclick="pageRedirect()">See Nearby Events</button></div></li>'
         $('#search-results').append(item);
         i++;
@@ -97,6 +98,15 @@ function localEvents() {
     });
 };
 
+
+        //Create item element syntax
+        let item = '<li class="accordion-item" data-accordion-item><a href="' + contentHref + '" role="tab" class="accordion-title" id="' + result + '">'+ el.name + '</a><div class="accordion-content" role="tabpanel" data-tab-content id="' + content + '"><h3 class="border-bottom-black">' + el.brewery_type.toUpperCase() + '</h3><h4>' + el.street + '</h4><h4 class="border-bottom-black">' + el.city + ', ' + el.state + '</h4><h5>' + phone + '</h5><a href="' + hrefURL + '" target="_blank">' + url + '</a></div></li>'
+        //append element to search element
+        $('#search-results').append(item);
+        i++;
+    })
+}
+main
 //paginate result data
 function paginateResults(data) {
     //initiate array of arrays
@@ -284,10 +294,14 @@ function showWeather (response) {
         description.innerText = response.weather[0].description;
     }
 
+beer-updates
+
+    .then (response => {
+        return response.json();})
+    .then(showWeather);
+}
+main
 // show weather on screen
 function showWeather (response) {
         console.log(response);
-    }
-// })
-
-// })
+}
