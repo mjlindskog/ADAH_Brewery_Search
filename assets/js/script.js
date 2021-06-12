@@ -1,4 +1,3 @@
-//Search Bar Event Listener
 $('#search-button').click(() => {
     event.preventDefault()
     let val = $('#search-bar').val();
