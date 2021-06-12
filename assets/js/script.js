@@ -32,10 +32,14 @@ function formatPhoneNumber(phoneNumberString) {
 }
 
 function renderResultElement(data) {
+    localStorage.setItem('currentResults', JSON.stringify(data));
+    console.log('data=');
+    console.log(data);
     data.forEach(el => {
         let i = 0;
         let result = 'result-' + i;
         let content = 'content-' + i;
+        let button = 'button-' + i;
         let phone = formatPhoneNumber(el.phone)
         let url = el.website_url;
         let hrefURL = el.website_url;
@@ -47,9 +51,10 @@ function renderResultElement(data) {
             phone = 'No Phone Number Listed'
         }
         let contentHref = '#content-' + i;
-        let item = '<li class="accordion-item" data-accordion-item><a href="' + contentHref + '" role="tab" class="accordion-title" id="' + result + '">'+ el.name + '</a><div class="accordion-content" role="tabpanel" data-tab-content id="' + content + '"><div class="flex-row justify-space-between border-bottom-black"><h3 class="">' + el.brewery_type.toUpperCase() + '</h3><a href="beer.html" class="button">Learn More</a></div><h4>' + el.street + '</h4><h4 class="border-bottom-black">' + el.city + ', ' + el.state + '</h4><h5>' + phone + '</h5><a href="' + hrefURL + '" target="_blank">' + url + '</a></div></li>'
+        let item = '<li class="accordion-item" data-accordion-item><a href="' + contentHref + '" role="tab" class="accordion-title" id="' + result + '">'+ el.name + '</a><div class="accordion-content" role="tabpanel" data-tab-content id="' + content + '"><div class="flex-row justify-space-between border-bottom-black"><h3 class="">' + el.brewery_type.toUpperCase() + '</h3><a href="beer.html" class="button" id="' + button + '">Learn More</a></div><h4>' + el.street + '</h4><h4 class="border-bottom-black">' + el.city + ', ' + el.state + '</h4><h5>' + phone + '</h5><a href="' + hrefURL + '" target="_blank">' + url + '</a></div></li>'
         $('#search-results').append(item);
         i++;
+        setButtonListener(button);
     })
 }
 
@@ -72,6 +77,8 @@ function paginateResults(data) {
 }
 
 function paginationButtons(data, index) {
+    console.log('paginate')
+    console.log(index);
     $('#pagination-buttons').empty();
     let prev = '<li class="pagination-previous" id="previous-page"><a href="#" aria-label="Previous page">Previous</a></li>';
     $('#pagination-buttons').append(prev);
@@ -112,6 +119,15 @@ function paginationButtons(data, index) {
         $('#next-page').text('Next');
         $('#next-page').addClass('disabled');
     }
+    $('#pagination-nav').removeClass('hide');
+
+}
+
+function setButtonListener(id) {
+    let JQid = '#' + id;
+    $(JQid).click(el => {
+        localStorage.setItem('selectedResult', JSON.stringify(id));
+    })
 }
 
 function paginationEvents(data, pageNum) {
