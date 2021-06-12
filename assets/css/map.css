@@ -3,5 +3,9 @@
 }
 
 #map {
-    margin: auto;
+    text-align: center;
+    font-weight: bold;
+    font-family: monospace;
+    color:cornflowerblue;
+
 }
