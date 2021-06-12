@@ -1,3 +1,4 @@
+=======
 //Search Bar Event Listener
 $('#search-button').click(() => {
     event.preventDefault()
@@ -214,7 +215,7 @@ function addToString(el, add) {
     return el
 }
 
-<<<<<<< WeatherBox
+WeatherBox
 // Weather App Functionality//
 // setting the API key
 // $(document).ready(function() {
@@ -235,12 +236,29 @@ $(button).on('click', function(event){
 // grabbing weather info from the API
 function getWeather(zipcode) {
     fetch (`${api.base}weather?zip=${zipcode}&units=imperial&appid=${api.key}`)
-    .then (current => {
-        return current.json();})
+    .then (response => {
+        return response.json();})
     .then(showWeather);
 }
 // show weather on screen
-function showWeather (current) {
-        console.log(current);
+function showWeather (response) {
+        console.log(response);
+        let location = document.querySelector('.location');
+        location.innerText = response.name;
+        let currentTemp = document.querySelector('.current-temp');
+        currentTemp.innerText = `${response.main.temp}°F`;
+        let highLow =  document.querySelector('.high-low');
+        highLow.innerHTML = `${response.main.temp_max}°F / ${response.main.temp_min}°F`;
+        let description = document.querySelector('.description');
+        description.innerText = response.weather[0].description;
+    }
+
+    .then (response => {
+        return response.json();})
+    .then(showWeather);
+}
+// show weather on screen
+function showWeather (response) {
+        console.log(response);
     }
 // })
