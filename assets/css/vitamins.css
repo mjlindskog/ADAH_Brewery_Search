@@ -125,6 +125,15 @@
     overflow: scroll;
 }
 
+.flex-row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.justify-space-between {
+    justify-content: space-between;
+}
+
 
 @media only screen and (max-width: 600px) {
     .desktop-display {
