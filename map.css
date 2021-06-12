@@ -1,0 +1,11 @@
+#mapid {
+    height: 180px;
+}
+
+#map {
+    text-align: center;
+    font-weight: bold;
+    font-family: monospace;
+    color:cornflowerblue;
+
+}
