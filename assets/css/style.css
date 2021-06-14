@@ -1,0 +1,181 @@
+:root {
+  --background: #e3ece2;
+  --background2: #dcdfbe;
+  --yellow: #e3b905;
+  --darkgreycard: #71757a;
+  --lightgreycard: #a9b6b6;
+  --black: #262f0d;
+  --btnhover: rgb(255, 217, 119);
+}
+
+* {
+  font-family: "Open Sans";
+}
+
+.top-bar {
+  background-color: var(--black);
+}
+
+.top-bar ul {
+  background-color: var(--yellow);
+  vertical-align: middle;
+}
+
+.menu a {
+  vertical-align: middle;
+}
+
+.menu-text {
+  font-family: "Fredericka the Great";
+  font-size: 18px;
+  color: var(--black);
+}
+
+.nav-href {
+  font-weight: bold;
+  font-style: 20px;
+}
+
+body {
+  background-color: var(--lightgreycard);
+}
+
+h4,
+h5 {
+  font-family: "Montserrat";
+  color: var(--black);
+}
+
+.callout {
+  border-radius: 25px;
+  background-color: var(--darkgreycard);
+}
+
+.input-group :first-child {
+  border-bottom-left-radius: 13px;
+  border-top-left-radius: 13px;
+  font-family: "Nunito";
+  font-weight: bold;
+  background-color: var(--black);
+  color: white;
+}
+
+#search-button.button {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: var(--yellow);
+  color: var(--black);
+}
+
+#search-button.button :hover {
+  background-color: rgb(255, 217, 119);
+}
+
+.accordion-item a {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.accordion-item :first-child {
+  background-color: var(--background);
+  font-family: "Montserrat";
+}
+
+.accordion-content {
+  background-color: var(--background);
+  font-family: "Open Sans";
+}
+
+.button {
+  border-radius: 10px;
+  background-color: var(--yellow);
+  color: var(--black);
+  font-weight: bold;
+}
+
+.button:hover {
+  background-color: var(--btnhover);
+  color: var(--black);
+}
+
+#search-button.button:hover {
+  background-color: var(--btnhover);
+}
+
+.pagination .current {
+  background-color: var(--yellow);
+  border-radius: 5px;
+  padding: 1px;
+  margin: 1px;
+  font-weight: bold;
+}
+
+.pagination a {
+  background-color: var(--yellow);
+  border-radius: 5px;
+  margin: 1px;
+}
+
+.pagination a:hover {
+  background-color: var(--btnhover);
+}
+
+.pagination .disabled {
+  background-color: var(--yellow);
+  border-radius: 5px;
+  color: grey;
+}
+
+.pagination .disabled:hover {
+  background-color: var(--yellow);
+  border-radius: 5px;
+  color: grey;
+}
+
+.pagination-previous {
+  border-radius: 5px;
+}
+
+/* learn more page */
+
+#beer-body {
+  background-color: var(--darkgreycard);
+}
+
+#beer-card {
+  background-color: var(--background);
+  color: var(--black);
+  border-style: solid;
+  border-color: var(--yellow);
+  border-width: 5px;
+}
+
+#event-card {
+  background-color: var(--background);
+  border-style: solid;
+  border-color: var(--yellow);
+  border-width: 5px;
+}
+
+.card-divider {
+  background-color: var(--background2);
+}
+
+.card-section {
+  background-color: var(--background2);
+}
+
+.selectBrew,
+#nearbyEvents {
+  font-family: "Montserrat";
+  font-weight: bold !important;
+}
+
+.brewery-type-header,
+.breweryPGAddress,
+.phoneNbr,
+.brewURL,
+.tdy-weather,
+#brewery-name {
+  font-family: "Montserrat";
+}

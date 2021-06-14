@@ -22,7 +22,7 @@ if(phone === null) {
 console.log(brewery)
 
 $('#brewery-name').text(brewery.name);
-$('#brewery-type').text(brewery.brewer_type);
+$('#brewery-type').text(brewery.brewery_type);
 $('#brewery-street').text(brewery.street);
 $('#brewery-city').text(brewery.state);
 $('#brewery-phone').text(phone);
@@ -31,7 +31,7 @@ $('#brewery-url').text(url);
 //Weather
 const api = {
     key: '5eb289bb53abf02581c3494d598b36af',
-    base: 'http://api.openweathermap.org/data/2.5/'
+    base: 'https://api.openweathermap.org/data/2.5/'
 }
 getWeather();
 function getWeather() {
@@ -75,7 +75,7 @@ $.ajax({
     async:true,
     dataType: "json",
     success: function(json) {
-                console.log('events')
+                console.log('events');
                 console.log(json._embedded.events[0]);
                 let event = json._embedded.events[0];
                 $('#event-name').text(event.name);

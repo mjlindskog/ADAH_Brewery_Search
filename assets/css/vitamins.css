@@ -1,142 +1,140 @@
 .m-0-bottom {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 .m-0-left {
-    margin-left: 0 !important;
+  margin-left: 0 !important;
 }
 
 .m-05-left {
-    margin-left: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .m-05-left {
-    margin-left: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .m-1-top {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .m-1-vert {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .m-1-sides {
-    margin-left: 1rem;
-    margin-right: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .m-1-left {
-    margin-left: 1rem !important;
+  margin-left: 1rem !important;
 }
 
 .m-1-right {
-    margin-right: 1rem !important;
+  margin-right: 1rem !important;
 }
 
-
 .m-25-top {
-    margin-top: 2.5rem !important;
+  margin-top: 2.5rem !important;
 }
 
 .m-25 {
-    margin: 2.5rem !important;
+  margin: 2.5rem !important;
 }
 
 .m-5-top {
-    margin-top: 5rem;
+  margin-top: 5rem;
 }
 
 .m-5-bottom {
-    margin-bottom: 5rem !important;
+  margin-bottom: 5rem !important;
 }
 
 .m-25-sides {
-    margin-left: 2.5rem;
-    margin-right: 2.5rem;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
 }
 
 .p-025 {
-    padding: 0.25rem !important;
+  padding: 0.25rem !important;
 }
 
 .p-1 {
-    padding: 1rem !important;
+  padding: 1rem !important;
 }
 
 .p-1-vert {
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
 }
 
-
 .p-25 {
-    padding: 2.5rem !important;
+  padding: 2.5rem !important;
 }
 
 .p-25-vert {
-    padding-top: 2.5rem !important;
-    padding-bottom: 2.5rem !important;
+  padding-top: 2.5rem !important;
+  padding-bottom: 2.5rem !important;
 }
 
 .w-65 {
-    width: 65% !important;
+  width: 65% !important;
 }
 
 .w-75 {
-    width: 75% !important;
+  width: 75% !important;
 }
 
 .w-80 {
-    width: 80% !important;
+  width: 80% !important;
 }
 
 .w-100 {
-    width: 100% !important;
+  width: 100% !important;
 }
 
-
 .text-med {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
 }
 
 .border-black {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 
 .border-black-top {
-    border-top: 1px solid black;
+  border-top: 1px solid black;
 }
 
 .border-bottom-black {
-    border-bottom: 1px solid black !important;
+  border-bottom: 1px solid black !important;
+  color: #262f0d;
+  font-family: "Montserrat";
 }
 
 .corner-med {
-    border-radius: 5px;
+  border-radius: 5px;
 }
 
 .background-clear {
-    background: transparent;
+  background: transparent;
 }
 
 .scroll {
-    overflow: scroll;
+  overflow: scroll;
 }
 
 .flex-row {
-    display: flex;
-    flex-flow: row wrap;
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .justify-space-between {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
-
 @media only screen and (max-width: 600px) {
-    .desktop-display {
-        display: none;
-    }
+  .desktop-display {
+    display: none;
   }
+}
