@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Montserrat&family=Nunito:wght@600&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
     <link
       rel="stylesheet"
@@ -11,6 +13,7 @@
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="assets/css/style.css">
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
@@ -33,12 +36,12 @@
     ></script>
     <title>Entertainment Options</title>
 </head>
-<body>
+<body id="beer-body">
     <header>
       <nav class="top-bar">
         <div class="top-bar-left">
           <ul class="menu">
-            <li class="menu-text">Beer & Fun</li>
+            <li class="menu-text">A Drink Around Here</li>
             <li><a href="#">Github</a></li>
             <li><a href="#">Team</a></li>
             <li><a href="#">Help</a></li>
@@ -47,7 +50,7 @@
       </nav>
     </header>
     <main class="grid-container fluid">
-      <div class="callout m-25-top m-25-sides p-25">
+      <div id="beer-card" class="callout m-25-top m-25-sides p-25">
         <div class="border-bottom-black">
           <h1 class="selectBrew">Brewery:</h1>
           <h2 id="brewery-name">Brewery Name</h2>
@@ -55,20 +58,20 @@
         <div class="">
           <div class="">
             <div class="border-bottom-black m-1-top">
-              <h3>Brewery Type:</h3>
+              <h3 class="brewery-type-header">Brewery Type:</h3>
               <h4 id="brewery-type">BreweryType</h4>
             </div>
             <div class="border-bottom-black m-1-top">
-              <h3>Address:</h3>
+              <h3 class="breweryPGAddress">Address:</h3>
               <h4 id="brewery-street">Street</h4>
               <h4 id="brewery-city">City</h4>
             </div>
             <div class="border-bottom-black m-1-top">
-              <h3>Phone Number</h3>
+              <h3 class="phoneNbr">Phone Number:</h3>
               <h4 id="brewery-phone">Phone Number</h4>
             </div>
             <div class="border-bottom-black m-1-top">
-              <h3>URL</h3>
+              <h3 class="brewURL">URL:</h3>
               <h4><a src="#" id="brewery-url">Url</a></h4>
             </div>
           </div>
@@ -76,14 +79,14 @@
 
           </div>
           <div class="m-25-top" id="weather">
-            <h3>Todays Weather:</h3>
+            <h3 class="tdy-weather">Location Weather:</h3>
             <h4 id="temp">Temp</h4>
           </div>
         </div>
       </div>
 
-      <div class="callout m-25-top m-25-sides p-25">
-        <h1 class="border-bottom-black">Nearby Events:</h1>
+      <div id="event-card" class="callout m-25-top m-25-sides p-25">
+        <h1 id="nearbyEvents"class="border-bottom-black">Nearby Events:</h1>
         <div class="card m-25-top" style="width: 300px;">
           <div class="card-divider">
             <h4 class="event-name" id="event-name">Event Name</h4>
