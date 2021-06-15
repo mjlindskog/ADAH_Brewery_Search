@@ -32,8 +32,8 @@ function formatPhoneNumber(phoneNumberString) {
 
 function renderResultElement(data) {
     localStorage.setItem('currentResults', JSON.stringify(data));
-    console.log('data=');
-    console.log(data);
+    //console.log('data=');
+    //console.log(data);
     let i = 0;
     data.forEach(el => {
         let result = 'result-' + i;
@@ -182,3 +182,4 @@ function addToString(el, add) {
     el = el.toString();
     return el
 }
+
