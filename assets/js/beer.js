@@ -41,7 +41,7 @@ if(latitude != null){
     var mymap = L.map('mapid').setView([latitude, longitude], 13);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2xvbmd5NyIsImEiOiJja3BxNHpzdzcwOHJzMnNydjdpeDI2dWIxIn0.5FFHiq6sQIPXBxUYB0o_qQ', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright" class="pointer">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/" class="pointer">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox/streets-v11',
     tileSize: 512,
