@@ -81,16 +81,17 @@ $.ajax({
                 $('#event-name').text(event.name);
                 $('#event-address').text(event._embedded.venues[0].name);
                 $('#event-time').text(event.dates.start.localTime);
+                $('#ticket-button').src(event.url);
 
                 // Parse the response.
                 // Do other things.
                 //json = JSON.parse(json);
                 //console.log(json);
-             },
+    },
     error: function(xhr, status, err) {
                 // This time, we do not end up here!
-             }
-  });
+    },
+});
 
 
   function getData(){

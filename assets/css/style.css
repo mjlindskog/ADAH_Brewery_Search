@@ -26,9 +26,9 @@
 }
 
 .menu-text {
-  font-family: "Fredericka the Great";
-  font-size: 18px;
-  color: var(--black);
+  position: absolute;
+  width: 186px;
+  height: 45px;
 }
 
 .nav-href {
