@@ -14,26 +14,50 @@
 
 .top-bar {
   background-color: var(--black);
+  border: 0px;
 }
 
 .top-bar ul {
   background-color: var(--yellow);
-  vertical-align: middle;
+  display: flex;
+  text-align: right;
 }
 
 .menu a {
-  vertical-align: middle;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  text-align: right;
+}
+
+.menu .menu-text {
+  padding: 0px;
+  text-align: right;
 }
 
 .menu-text {
-  position: absolute;
-  width: 186px;
-  height: 45px;
+  position: relative;
+  width: 260px;
+  height: auto;
+  background-color: var(--black);
+  border-right-width: 10px;
+  border-color: var(--black);
+  border-style: solid;
 }
 
-.nav-href {
+a.nav-href {
   font-weight: bold;
-  font-style: 20px;
+  font-size: 24px;
+  position: relative;
+  background-color: var(--yellow);
+  border-style: double;
+  border-color: var(--yellow);
+  border-top-width: 18.5px;
+  border-bottom-width: 18.5px;
+}
+
+.menu li {
+  justify-content: right;
 }
 
 body {
@@ -150,7 +174,7 @@ h5 {
   border-width: 5px;
 }
 
-#event-card {
+.event-box {
   background-color: var(--background);
   border-style: solid;
   border-color: var(--yellow);
