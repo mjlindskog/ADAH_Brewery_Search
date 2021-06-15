@@ -10,7 +10,7 @@ function renderEventCards(events) {
         let timeValue = militaryToNormal(el.dates.start.localTime)
         let date = 'eventDate-' + i;
         let dateValue = formatDate(el.dates.start.localDate);
-        let item = `<div class="card m-25" id="${card}" style="width: 300px;"><div class="card-divider"><h4 class="event-name" id="${name}">${el.name}</h4></div><div class="card-section"><p id="${address}">${el._embedded.venues[0].name}</p><p id="${date}">${dateValue}</p><p id="${time}">${timeValue}</p><a id="${ticket}">Buy Ticket</a></div></div>`;
+        let item = `<div class="card m-25" id="${card}" style="width: 300px;"><div class="card-divider"><h4 class="event-name" id="${name}">${el.name}</h4></div><div class="card-section"><p id="${address}">${el._embedded.venues[0].name}</p><p id="${date}">${dateValue}</p><p id="${time}">${timeValue}</p><a class="pointer" id="${ticket}">Buy Ticket</a></div></div>`;
         $('#event-box').append(item);
         ticket = '#' + ticket;
         $(ticket).attr('href', el.url)
