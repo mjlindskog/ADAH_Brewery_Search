@@ -16,12 +16,27 @@
   <body>
 
     <!-- Start Top Bar -->
-    <nav class="top-bar">
+    <nav class="top-bar hide-for-small-only">
       <div class="top-bar-left">
         <ul class="menu">
-          <li><a href="index.html"><img class="menu-text"scr="./assets/img/ADAHLogoGreen.png"></a></li>
+          <li><a href="index.html"><img class="menu-text" src="assets/img/ADAHLogo.png"></a></li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
           <li><a href="https://github.com/EthanHarsh/A_Drink_Around_Here" class="nav-href">Github</a></li>
-          <li><a href="emailto:slongy7@yahoo.com" class="nav-href">Help</a></li>
+          <li><a href="mailto:slongy7@yahoo.com" class="nav-href">Help</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav class="top-bar show-for-small-only">
+      <div class="top-bar-left">
+          <a href="index.html"><img class="menu-text" src="assets/img/ADAHLogo.png"></a>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+          <li><a href="https://github.com/EthanHarsh/A_Drink_Around_Here" class="nav-href">Github</a></li>
+          <li><a href="mailto:slongy7@yahoo.com" class="nav-href">Help</a></li>
         </ul>
       </div>
     </nav>
@@ -41,11 +56,11 @@
     <!-- Start Main Content -->
     <main class="grid-container fluid">
         <!-- Start Search Area -->
-        <div class="callout m-25-top m-25-sides p-25">
+        <div class="callout m-25-top m-25-sides p-25 hide-for-small-only">
             <!-- Start Search Bar -->
             <form class="input-group m-0-bottom" id="search-form">
-                <span class="input-group-label">Find Breweries</span>
-                <input class="input-group-field" type="text" id="search-bar">
+                <span class="input-group-label">Find Breweries:</span>
+                <input class="input-group-field" type="text" placeholder="City, Name, Keyword" id="search-bar">
                 <div class="input-group-button">
                   <input type="submit" class="button" value="Submit" id="search-button">
                 </div>
@@ -71,6 +86,36 @@
               </ul>
             </nav>
         </div>
+        <div class="callout m-25-top m-2-sides p-10-sides show-for-small-only">
+          <!-- Start Search Bar -->
+          <form class="input-group m-0-bottom" id="search-form">
+              <span class="input-group-label">Find By:</span>
+              <input class="input-group-field" type="text" placeholder="City, Name, Keyword"id="search-bar">
+              <div class="input-group-button">
+                <input type="submit" class="button" value="Submit" id="search-button">
+              </div>
+          </form>
+          <!-- End Search Bar -->
+          <!-- Start Search Results -->
+          <ul class="accordion hide" id="search-results"  data-multi-expand="true" data-allow-all-closed="true" role="tablist" data-accordion>
+            <!-- Search Results Content Goes Here -->
+          </ul>
+          <!-- End Search Results -->
+          <!-- Results Pagination -->
+          <nav aria-label="Pagination" class="m-1-vert hide" id="pagination-nav">
+            <ul class="pagination text-center" id="pagination-buttons">
+              <li class="pagination-previous disabled" id="previous-page">Previous</li>
+              <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
+              <li>2</li>
+              <li><a href="#" aria-label="Page 3">3</a></li>
+              <li><a href="#" aria-label="Page 4">4</a></li>
+              <li class="ellipsis"></li>
+              <li><a href="#" aria-label="Page 12">12</a></li>
+              <li><a href="#" aria-label="Page 13">13</a></li>
+              <li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
+            </ul>
+          </nav>
+      </div>
         <!-- End Search Area -->
     </main>
     <!-- End Main Content -->
