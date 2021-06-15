@@ -150,7 +150,7 @@ h5 {
   border-width: 5px;
 }
 
-#event-card {
+.event-box {
   background-color: var(--background);
   border-style: solid;
   border-color: var(--yellow);

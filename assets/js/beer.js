@@ -19,7 +19,7 @@ if(phone === null) {
     phone = 'No Phone Number Listed'
 }
 
-console.log(brewery)
+//console.log(brewery)
 
 $('#brewery-name').text(brewery.name);
 $('#brewery-type').text(brewery.brewery_type);
@@ -34,6 +34,7 @@ const api = {
     base: 'https://api.openweathermap.org/data/2.5/'
 }
 getWeather();
+
 function getWeather() {
     fetch (`${api.base}weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${api.key}`)
     .then (response => {
@@ -75,43 +76,42 @@ $.ajax({
     async:true,
     dataType: "json",
     success: function(json) {
-                console.log('events');
-                console.log(json._embedded.events[0]);
-                let event = json._embedded.events[0];
-                $('#event-name').text(event.name);
-                $('#event-address').text(event._embedded.venues[0].name);
-                $('#event-time').text(event.dates.start.localTime);
-
-                // Parse the response.
-                // Do other things.
-                //json = JSON.parse(json);
-                //console.log(json);
-             },
+        //console.log('json')
+       // console.log(json)
+        //console.log('events');
+        if(json._embedded == null) {
+            //console.log('embeded null')
+            $('#event-box').empty();
+            $('#event-box').text('No events found 🥲')
+        } else {
+            renderEventCards(json._embedded.events);
+        }
+    },
     error: function(xhr, status, err) {
                 // This time, we do not end up here!
              }
-  });
+});
 
 
-  function getData(){
-      let fullResults = localStorage.getItem('currentResults');
-      fullResults = JSON.parse(fullResults);
-      let selectedResult = localStorage.getItem('selectedResult');
-      selectedResult = JSON.parse(selectedResult);
-      let id = selectedResult.split('-')[1];
-      //console.log(id);
-      result = fullResults[id];
-      //console.log(result);
-      return result;
+function getData(){
+    let fullResults = localStorage.getItem('currentResults');
+    fullResults = JSON.parse(fullResults);
+    let selectedResult = localStorage.getItem('selectedResult');
+    selectedResult = JSON.parse(selectedResult);
+    let id = selectedResult.split('-')[1];
+    //console.log(id);
+    result = fullResults[id];
+    //console.log(result);
+    return result;
+}
+
+function formatPhoneNumber(phoneNumberString) {
+  var cleaned = ('' + phoneNumberString).replace(/\D/g, '');
+  var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+  if (match) {
+    return '(' + match[1] + ') ' + match[2] + '-' + match[3];
   }
-
-  function formatPhoneNumber(phoneNumberString) {
-    var cleaned = ('' + phoneNumberString).replace(/\D/g, '');
-    var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-    if (match) {
-      return '(' + match[1] + ') ' + match[2] + '-' + match[3];
-    }
-    return null;
+  return null;
 }
 
 

@@ -32,10 +32,10 @@ function formatPhoneNumber(phoneNumberString) {
 
 function renderResultElement(data) {
     localStorage.setItem('currentResults', JSON.stringify(data));
-    console.log('data=');
-    console.log(data);
+    //console.log('data=');
+    //console.log(data);
+    let i = 0;
     data.forEach(el => {
-        let i = 0;
         let result = 'result-' + i;
         let content = 'content-' + i;
         let button = 'button-' + i;
