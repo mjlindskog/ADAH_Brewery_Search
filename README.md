@@ -13,7 +13,7 @@ A Drink Around Here is a brewery search application. When the user inputs their 
 
 ### Deployed URL:
 
-https://ethanharsh.github.io/A_Drink_Around_Here/
+https://mjlindskog.github.io/ADAH_Brewery_Search/
 
 ### Future Development:
 
